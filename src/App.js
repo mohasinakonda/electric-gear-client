@@ -1,9 +1,10 @@
 import './App.css';
+import Navbar from './Pages/Shared/Navbar';
 
 function App() {
   return (
     <div className="">
-      <h2 className='text-3xl bg-secondary'> this is  home page</h2>
+      <Navbar />
 
     </div>
   );
