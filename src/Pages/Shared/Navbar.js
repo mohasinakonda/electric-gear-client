@@ -1,20 +1,23 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../Firebase.init';
 
 const Navbar = () => {
+    const [user] = useAuthState(auth)
+
     const navItem = <>
         <li>
 
-
-            <Link to='/'>home</Link>
+            <Link to='/'>Home</Link>
         </li>
         <li>
 
-            <Link to='/products'>products</Link>
+            <Link to='products'>products</Link>
         </li>
         <li>
 
-            <Link to='/about'>about</Link>
+            <Link to='/blogs'>Blogs</Link>
         </li>
     </>
     return (
@@ -26,17 +29,23 @@ const Navbar = () => {
                     </label>
                     <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {navItem}
+
                     </ul>
                 </div>
-                <Link class="border text-xl">Electric gear</Link>
+                <Link to='/' class=" normal-case text-xl">Electric Gear</Link>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
                     {navItem}
+
                 </ul>
             </div>
             <div class="navbar-end">
-                <Link to='/login'>login</Link>
+
+                {!user ? <Link to='/login'>Login</Link> :
+
+                    <button className='btn'>Log out</button>}
+
             </div>
         </div>
     );
