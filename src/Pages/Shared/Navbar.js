@@ -32,7 +32,7 @@ const Navbar = () => {
 
                     </ul>
                 </div>
-                <Link to='/' class=" normal-case text-xl">Electric Gear</Link>
+                <Link to='/' class=" normal-case text-xl ">Electric Gear</Link>
             </div>
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal p-0">
@@ -44,7 +44,7 @@ const Navbar = () => {
 
                 {!user ? <Link to='/login'>Login</Link> :
 
-                    <button className='btn'>Log out</button>}
+                    <button className='btn btn-outline  btn-sm btn-secondary text-gradient-to-r from-primary to-secondary'>Log out</button>}
 
             </div>
         </div>

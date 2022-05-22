@@ -1,0 +1,65 @@
+[
+	{
+		"name": "Bevel cutting plier Best BST-21",
+		"img": "https://multi-com.pl/multicom/pimg/BST-21_500.jpg",
+		"description": "Bevel cutting plier Best BST-21 designed for precision cutting of world known Best company. It has a comfortable handle covered with plastic pads and a stable connecting rod carrying heavy loads.",
+		"productWeight": "0.30 kg",
+		"price": 30,
+		"stock": 300,
+		"status": "avialable"
+	},
+	{
+		"name": "Long Nose Pliers 165mm",
+		"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHnyq1tg9fCQoUxsyhQiN-Kd8YAvrclcnQ8Q&usqp=CAU",
+		"description": "Faithfull Long Nose Pliers feature long serrated jaws to maximise grip. They are tapered to a fine end for accessing and manoeuvering small objects in confined spaces.Manufactured from chrome-vanadium steel with a rustproof satin nickel finish and fitted with cushion-grip sleeves for user comfort.Tested and certified to the GS standard. ROHS compliant.",
+		"productWeight": "0.30 kg",
+		"price": 33,
+		"stock": 700,
+		"status": "avialable"
+	},
+	{
+		"name": "Automatic wire stripper",
+		"img": "https://www.weidinger.eu/img/600/744/resize/c/c.k-495001-055_495001.jpg",
+		"description": "Automatic wire stripping without adjustment, Crimping of insulated and non-insulated terminals micro adjustment knob allows the stripping of wires under 0.2 mm², Hardened blades for long life capacities: Stripping: 0.2-6.0 mm² copper or aluminium wire Cut: Wire HRC 40-50 Crimping: 1.5 / 2.5 / 6.0 mm insulated terminals and 1.5 / 2.5 / 4.0 / 6.0 mm non-insulated terminals and non-insulated cable lugs",
+		"productWeight": "0.30 kg",
+		"price": 39,
+		"stock": 1400,
+		"status": "avialable"
+	},
+	{
+		"name": "Electrical Voltage Tester",
+		"img": "https://image.shutterstock.com/image-photo/electrical-tester-screwdrivers-on-white-260nw-1117003844.jpg",
+		"description": "With the help of our expert team members, we have been able to provide Electrical Voltage Tester.safe an use.",
+		"productWeight": "0.30 kg",
+		"price": 32,
+		"stock": 340,
+		"status": "avialable"
+	},
+	{
+		"name": "Bevel cutting plier Best BST-21",
+		"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9LUEYNkK5ouSMa8AZ0IQNwZ2YyKGEbLYpFA&usqp=CAU",
+		"description": "Bevel cutting plier Best BST-21 designed for precision cutting of world known Best company. It has a comfortable handle covered with plastic pads and a stable connecting rod carrying heavy loads.",
+		"productWeight": "0.30 kg",
+		"price": 41,
+		"stock": 2300,
+		"status": "avialable"
+	},
+	{
+		"name": "Bevel cutting plier Best BST-21",
+		"img": "https://multi-com.pl/multicom/pimg/BST-21_500.jpg",
+		"description": "Bevel cutting plier Best BST-21 designed for precision cutting of world known Best company. It has a comfortable handle covered with plastic pads and a stable connecting rod carrying heavy loads.",
+		"productWeight": "0.30 kg",
+		"price": 29,
+		"stock": 1300,
+		"status": "avialable"
+	},
+	{
+		"name": "Bevel cutting plier Best BST-21",
+		"img": "https://multi-com.pl/multicom/pimg/BST-21_500.jpg",
+		"description": "Bevel cutting plier Best BST-21 designed for precision cutting of world known Best company. It has a comfortable handle covered with plastic pads and a stable connecting rod carrying heavy loads.",
+		"productWeight": "0.31 kg",
+		"price": 32,
+		"stock": 800,
+		"status": "avialable"
+	}
+]
