@@ -5,6 +5,7 @@ import Login from './Pages/LoginAndRegister/Login';
 import LoginRegister from './Pages/LoginAndRegister/LoginRegister';
 import Register from './Pages/LoginAndRegister/Register';
 import AllProduct from './Pages/Products/AllProduct';
+import ProductsDetails from './Pages/Products/ProductsDetails';
 import Navbar from './Pages/Shared/Navbar';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="register" element={<Register></Register>}></Route>
         </Route>
         <Route path='/products' element={<AllProduct />}></Route>
+        <Route path='/products/:productId' element={<ProductsDetails />}></Route>
       </Routes>
 
     </div>
