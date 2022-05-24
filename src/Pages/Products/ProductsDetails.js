@@ -42,17 +42,15 @@ const ProductsDetails = () => {
 
     const handleOrderItem = (id) => {
         const orders = { name, price, quantity, stock, img, email: user.email }
-        if (quantity > stock || quantity < 100) {
-            console.log('please check your  order quantity')
-            return
-        }
+
         fetch('http://localhost:5000/orders', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(orders)
-        }).then(res => res.json())
+        })
+            .then(res => res.json())
             .then(order => {
                 console.log(order)
             })

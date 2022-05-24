@@ -21,6 +21,7 @@ const Deshboard = () => {
                     <li><Link to='/dashboard'>My items</Link></li>
                     <li><Link to='/dashboard/profile'>Profile</Link></li>
                     <li><Link to='/dashboard/review'>Review</Link></li>
+                    <li><Link to='/dashboard/users'>Users</Link></li>
 
 
                 </ul>

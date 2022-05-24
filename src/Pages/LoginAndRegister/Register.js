@@ -8,7 +8,7 @@ import Spinner from '../Shared/Spinner';
 const Register = () => {
 
 
-    const [updateProfile, updating] = useUpdateProfile(auth);
+    const [updateProfile, updating, err] = useUpdateProfile(auth);
     const navigate = useNavigate()
     const [displayName, setUserName] = useState('')
     const [
@@ -20,7 +20,9 @@ const Register = () => {
 
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
+
     const [token] = useToken(user, displayName)
+
     useEffect(() => {
         if (token) {
             navigate(from, { replace: true });
@@ -30,6 +32,9 @@ const Register = () => {
 
     if (updating || loading) {
         return <Spinner></Spinner>
+    }
+    if (err) {
+        console.log(err)
     }
     const handleName = (event) => {
         setUserName(event.target.value)

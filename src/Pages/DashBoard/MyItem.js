@@ -28,6 +28,7 @@ const MyItem = () => {
                         <th>Name</th>
                         <th>price</th>
                         <th>Quantity</th>
+                        <th>Total</th>
                         <th>status</th>
                     </tr>
                 </thead>
@@ -38,13 +39,14 @@ const MyItem = () => {
                         data.map(product => <tr>
                             <div class="avatar">
                                 <div class="mask mask-squircle w-12 h-12 ms-3">
-                                    <img src={product.img} alt="Avatar Tailwind CSS Component" />
+                                    <img src={product.img} alt={product.name} />
                                 </div>
                             </div>
                             <td>{product.name}</td>
                             <td>
                                 $ {product.price}</td>
                             <td>{product.quantity}</td>
+                            <td>$ {product.quantity * product.price}</td>
                             <td>
                                 <button className='btn btn-sm'>{product.paid ? 'paid' : 'pay'}</button>
                             </td>
