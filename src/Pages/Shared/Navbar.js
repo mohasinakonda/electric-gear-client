@@ -23,6 +23,10 @@ const Navbar = () => {
 
             <Link to='/blogs'>Blogs</Link>
         </li>
+        <li>
+
+            <Link to='/dashboard'>Dashboard</Link>
+        </li>
     </>
     return (
         <div class="navbar bg-base-100">

@@ -34,7 +34,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route
-          path="/deshboard"
+          path="/dashboard"
           element={
             <RequireAuth>
               <Deshboard />

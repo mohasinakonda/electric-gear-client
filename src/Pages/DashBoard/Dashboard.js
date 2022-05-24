@@ -18,9 +18,9 @@ const Deshboard = () => {
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
 
 
-                    <li><Link to='/deshboard'>My items</Link></li>
-                    <li><Link to='/deshboard/profile'>Profile</Link></li>
-                    <li><Link to='/deshboard/review'>Review</Link></li>
+                    <li><Link to='/dashboard'>My items</Link></li>
+                    <li><Link to='/dashboard/profile'>Profile</Link></li>
+                    <li><Link to='/dashboard/review'>Review</Link></li>
 
 
                 </ul>
