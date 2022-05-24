@@ -33,9 +33,7 @@ const Register = () => {
     if (updating || loading) {
         return <Spinner></Spinner>
     }
-    if (err) {
-        console.log(err)
-    }
+
     const handleName = (event) => {
         setUserName(event.target.value)
     }

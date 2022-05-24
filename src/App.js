@@ -15,6 +15,8 @@ import RequireAuth from './RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Users from './Pages/DashBoard/Users';
+import AddProduct from './Pages/DashBoard/AddProduct';
+import ManageProducts from './Pages/DashBoard/ManageProducts';
 
 
 function App() {
@@ -48,6 +50,8 @@ function App() {
           <Route path="profile" element={<Profile />}></Route>
           <Route path="review" element={<Review />}></Route>
           <Route path="users" element={<Users />}></Route>
+          <Route path="add-product" element={<AddProduct />}></Route>
+          <Route path="manage-product" element={<ManageProducts />}></Route>
         </Route>
       </Routes>
       <ToastContainer></ToastContainer>
