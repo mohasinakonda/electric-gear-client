@@ -7,6 +7,7 @@ import auth from '../../Firebase.init';
 const Navbar = () => {
     const [user] = useAuthState(auth)
     const handleLogOut = () => {
+        localStorage.removeItem('access-token')
         signOut(auth)
     }
     const navItem = <>
@@ -43,6 +44,22 @@ const Navbar = () => {
 
                 </ul>
             </div>
+            <label tabIndex="1" for="open-side-nav" className="btn btn-ghost lg:hidden">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h8m-8 6h16"
+                    />
+                </svg>
+            </label>
             <div class="navbar-end">
 
                 {!user ? <Link to='/login'>Login</Link> :

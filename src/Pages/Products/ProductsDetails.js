@@ -51,7 +51,7 @@ const ProductsDetails = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ orders)
+            body: JSON.stringify(orders)
         }).then(res => res.json())
             .then(order => {
                 console.log(order)

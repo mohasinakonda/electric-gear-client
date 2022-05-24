@@ -3,6 +3,7 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 // import auth from '../../firebase.init';
 import auth from '../../Firebase.init'
+import useToken from '../../hooks/useToken';
 // import useToken from '../../hooks/useToken';
 import Spinner from '../Shared/Spinner';
 
@@ -14,16 +15,16 @@ const LoginRegister = () => {
     }
     const location = useLocation()
     const navigate = useNavigate()
-    // const [token] = useToken(user)
+    const [token] = useToken(user)
 
     let from = location.state?.from?.pathname || "/";
     useEffect(() => {
 
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
 
         }
-    }, [from, user, navigate,])
+    }, [from, user, navigate, token])
     if (googleloading) {
         return <Spinner></Spinner>
     }

@@ -4,7 +4,7 @@ import auth from '../../Firebase.init';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import Spinner from '../Shared/Spinner';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import useToken from '../../hooks/useToken';
+import useToken from '../../hooks/useToken';
 const Login = () => {
     const navigate = useNavigate()
     const [
@@ -13,16 +13,16 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    // const [token] = useToken(user)
+    const [token] = useToken(user)
 
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, navigate, from,])
+    }, [user, navigate, from, token])
     if (loading) {
         return <Spinner />
     }

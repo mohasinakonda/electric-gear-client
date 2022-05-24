@@ -7,6 +7,12 @@ import Register from './Pages/LoginAndRegister/Register';
 import AllProduct from './Pages/Products/AllProduct';
 import ProductsDetails from './Pages/Products/ProductsDetails';
 import Navbar from './Pages/Shared/Navbar';
+import Deshboard from './Pages/DashBoard/Dashboard';
+import MyItem from './Pages/DashBoard/MyItem';
+import Profile from './Pages/DashBoard/Profile';
+import Review from './Pages/DashBoard/Review';
+import RequireAuth from './RequireAuth';
+
 
 function App() {
   return (
@@ -21,7 +27,24 @@ function App() {
           <Route path="register" element={<Register></Register>}></Route>
         </Route>
         <Route path='/products' element={<AllProduct />}></Route>
-        <Route path='/products/:productId' element={<ProductsDetails />}></Route>
+
+        <Route path='/products/:productId' element={
+          <RequireAuth>
+            <ProductsDetails />
+          </RequireAuth>
+        }></Route>
+        <Route
+          path="/deshboard"
+          element={
+            <RequireAuth>
+              <Deshboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyItem />}></Route>
+          <Route path="profile" element={<Profile />}></Route>
+          <Route path="review" element={<Review />}></Route>
+        </Route>
       </Routes>
 
     </div>

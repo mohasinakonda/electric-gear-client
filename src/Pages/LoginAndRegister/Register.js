@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-// import auth from '../../Firebase.init'
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
-// import useToken from '../../hooks/useToken';
+import useToken from '../../hooks/useToken';
 import Spinner from '../Shared/Spinner';
 
 const Register = () => {
@@ -18,12 +17,15 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
-    // const [token] = useToken(user)
+
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+    const [token] = useToken(user, displayName)
     useEffect(() => {
-        if (user) {
-            navigate('/')
+        if (token) {
+            navigate(from, { replace: true });
         }
-    }, [user, navigate])
+    }, [user, navigate, token, from])
 
 
     if (updating || loading) {
