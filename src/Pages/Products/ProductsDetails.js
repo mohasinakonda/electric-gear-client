@@ -1,31 +1,63 @@
 import React, { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import auth from '../../Firebase.init';
 import Spinner from '../Shared/Spinner';
 
 const ProductsDetails = () => {
+    const [user] = useAuthState(auth)
+    console.log(user)
     const [quantity, setQuantity] = useState('')
     const [error, setError] = useState('')
+    const [disable, setDisable] = useState(true)
     const { productId } = useParams()
+
+    const navigate = useNavigate()
     const { data, isLoading } = useQuery('products', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+
     if (isLoading) {
         return <Spinner></Spinner>
     }
     const ProductsDetails = data.find((product) => product._id === productId)
-    const { img, name, price, description, productWeight, stock } = ProductsDetails
+    const { _id, img, name, price, description, productWeight, stock } = ProductsDetails
 
-    const handleOrde = (event) => {
+    const handleOrder = (event) => {
+
         const itmemQuantity = event.target.value
-        const itmemQuantityNumber = Number(itmemQuantity)
-        if (itmemQuantityNumber < 100) {
+        const itemQuantityNumber = Number(itmemQuantity)
+        if (itemQuantityNumber < 100) {
             setError('minimum order quantity 100pc')
+            setDisable(true)
             return
-        } else if (itmemQuantityNumber > stock) {
+        } else if (itemQuantityNumber > stock) {
+            setDisable(true)
             setError('you cross stock quantity ')
             return
         }
+        setDisable(false)
         setError('')
-        setQuantity(itmemQuantityNumber)
+        setQuantity(itemQuantityNumber)
+    }
+
+    const handleOrderItem = (id) => {
+        const orders = { name, price, quantity, stock, img, email: user.email }
+        if (quantity > stock || quantity < 100) {
+            console.log('please check your  order quantity')
+            return
+        }
+        fetch('http://localhost:5000/orders', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ orders)
+        }).then(res => res.json())
+            .then(order => {
+                console.log(order)
+            })
+
+
     }
     return (
         <div class="grid lg:grid-cols-2 lg:card-side bg-base-100 shadow-xl p-10">
@@ -41,11 +73,15 @@ const ProductsDetails = () => {
                 <p> <span className='font-bold'>description : </span>{description}</p>
                 <form >
                     <label className='font-bold py-3' htmlFor="orderQuantity"> Plase your order [min-100 pc]</label>
-                    <input onChange={handleOrde} type="number" name='orderQuantity' placeholder="Place your order quantity" class="input input-bordered input-primary w-full max-w-xs py-3" />
+                    <input onChange={handleOrder} type="number" name='orderQuantity' placeholder="Place your order quantity" class="input input-bordered input-primary w-full max-w-xs py-3" />
                 </form>
                 <p className='text-red-500'>{error}</p>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Order</button>
+                    <button
+                        onClick={() => handleOrderItem(_id)}
+                        class="btn btn-primary"
+                        disabled={disable}
+                    >Order & checkout</button>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import React, { useEffect, useState } from 'react';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 // import auth from '../../Firebase.init'
 import auth from '../../Firebase.init';
@@ -7,9 +7,11 @@ import auth from '../../Firebase.init';
 import Spinner from '../Shared/Spinner';
 
 const Register = () => {
+
+
     const [updateProfile, updating] = useUpdateProfile(auth);
     const navigate = useNavigate()
-    const [userName, setUserName] = useState('')
+    const [displayName, setUserName] = useState('')
     const [
         createUserWithEmailAndPassword,
         user,
@@ -17,15 +19,18 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     // const [token] = useToken(user)
-    if (user) {
-        navigate('/')
-    }
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [user, navigate])
 
-    const handleName = (event) => {
-        setUserName(event.target.value)
-    }
+
     if (updating || loading) {
         return <Spinner></Spinner>
+    }
+    const handleName = (event) => {
+        setUserName(event.target.value)
     }
     let errors
     if (error) {
@@ -36,7 +41,8 @@ const Register = () => {
         const name = event.target.name.value
         const email = event.target.email.value
         const password = event.target.password.value
-        await updateProfile({ displayName: userName })
+
+        await updateProfile({ displayName: name });
         await createUserWithEmailAndPassword(email, password)
         event.target.reset()
     }
