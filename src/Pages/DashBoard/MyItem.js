@@ -6,7 +6,9 @@ import Spinner from '../Shared/Spinner';
 
 const MyItem = () => {
     const [user] = useAuthState(auth)
-    const { data, isLoading } = useQuery('my-items', () => fetch(`http://localhost:5000/orders?email=${user.email}`, {
+
+
+    const { data, isLoading } = useQuery('my-items', () => fetch(`http://localhost:5000/order?email=${user.email}`, {
         method: 'get',
         headers: {
             'authorization': `Bearen ${localStorage.getItem('access-token')}`
@@ -14,15 +16,18 @@ const MyItem = () => {
     })
         .then(product => product.json())
     )
+
     if (isLoading) {
         return <Spinner></Spinner>
     }
-
+    const handleBtn = () => {
+        console.log(handleBtn)
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table w-full">
-
                 <thead>
+
                     <tr>
                         <th></th>
                         <th>Name</th>
@@ -33,33 +38,16 @@ const MyItem = () => {
                     </tr>
                 </thead>
                 <tbody>
-
-
                     {
-                        data.map(product => <tr>
-                            <div className="avatar">
-                                <div className="mask mask-squircle w-12 h-12 ms-3">
-                                    <img src={product.img} alt={product.name} />
-                                </div>
-                            </div>
-                            <td>{product.name}</td>
-                            <td>
-                                $ {product.price}</td>
-                            <td>{product.quantity}</td>
-                            <td>$ {product.quantity * product.price}</td>
-                            <td>
-                                <button className='btn btn-sm mD-2'>{product.paid ? 'paid' : 'pay'}</button>
-
-                                <button className='btn btn-sm bg-red-500'>Cancel</button>
-
-                            </td>
-                        </tr>)
+                        data.map(product => <MyItem
+                            key={product._id}
+                            product={product}
+                            handleBtn={handleBtn}
+                        ></MyItem>)
                     }
-
-
                 </tbody>
             </table>
-        </div>
+        </div >
     );
 };
 

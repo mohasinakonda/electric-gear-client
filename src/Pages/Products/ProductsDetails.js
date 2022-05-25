@@ -7,7 +7,7 @@ import Spinner from '../Shared/Spinner';
 
 const ProductsDetails = () => {
     const [user] = useAuthState(auth)
-    console.log(user)
+
     const [quantity, setQuantity] = useState('')
     const [error, setError] = useState('')
     const [disable, setDisable] = useState(true)
@@ -52,6 +52,7 @@ const ProductsDetails = () => {
         })
             .then(res => res.json())
             .then(order => {
+                navigate('/dashboard')
                 console.log(order)
             })
 

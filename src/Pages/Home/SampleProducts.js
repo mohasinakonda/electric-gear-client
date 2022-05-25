@@ -1,10 +1,11 @@
 import React from 'react';
-import { useQuery } from 'react-query';
+import useProduct from '../../hooks/useProduct';
 import Spinner from '../Shared/Spinner'
 import SampleProduct from './SampleProduct';
-// import {useQuery} from 'react-query'
+
 const SampleProducts = () => {
-    const { data, isLoading } = useQuery('products', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+
+    const [data, isLoading] = useProduct()
     if (isLoading) {
         return <Spinner></Spinner>
     }
