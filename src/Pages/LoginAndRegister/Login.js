@@ -49,15 +49,15 @@ const Login = () => {
                     <form onSubmit={signInPassword} className=' grid grid-cols-1 gap-3 mx-auto  w-[100%] px-5'>
 
                         <label htmlFor="email"> Email</label>
-                        <input name='email' type="email" placeholder="Enter your Email" class="input  input-bordered input-primary  " required />
+                        <input name='email' type="email" placeholder="Enter your Email" className="input  input-bordered input-primary  " required />
 
                         <label htmlFor="password"> Password</label>
 
-                        <input type="password" name='password' placeholder="password" class="input  input-bordered input-primary w-[100%] " required />
+                        <input type="password" name='password' placeholder="password" className="input  input-bordered input-primary w-[100%] " required />
                         <input type="submit" value='Login' className='btn btn-secondary' />
                     </form>
                     <p className='p-5'>Need have an account? <Link to='/register' className='text-primary' >create Account</Link></p>
-                    <div class="divider">OR</div>
+                    <div className="divider">OR</div>
 
                 </div>
 

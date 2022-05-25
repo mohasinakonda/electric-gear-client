@@ -64,20 +64,20 @@ const Register = () => {
                     <form onSubmit={handleRegister} className=' grid grid-cols-1 gap-3 mx-auto  w-[100%] px-5'>
 
                         <label htmlFor="name"> Name</label>
-                        <input onChange={handleName} name='name' type="text" placeholder="Enter your name" class="input  input-bordered input-primary  " />
+                        <input onChange={handleName} name='name' type="text" placeholder="Enter your name" className="input  input-bordered input-primary  " />
 
                         <label htmlFor="email"> Email</label>
-                        <input name='email' type="email" placeholder="Enter your Email" class="input  input-bordered input-primary  " />
+                        <input name='email' type="email" placeholder="Enter your Email" className="input  input-bordered input-primary  " />
 
 
                         <label htmlFor="password"> Password</label>
 
-                        <input type="password" name='password' placeholder="password" class="input  input-bordered input-primary w-[100%]  " />
+                        <input type="password" name='password' placeholder="password" className="input  input-bordered input-primary w-[100%]  " />
                         <input type="submit" value='submit' className='btn btn-secondary' />
                         <p className='text-error'>{errors}</p>
                     </form>
                     <p className='p-5'>Alredy have an accound ? <Link to='/login' className='text-primary '>Login here</Link></p>
-                    <div class="divider">OR</div>
+                    <div className="divider">OR</div>
 
                 </div>
 

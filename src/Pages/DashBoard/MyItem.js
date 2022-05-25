@@ -19,8 +19,8 @@ const MyItem = () => {
     }
 
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
 
                 <thead>
                     <tr>
@@ -37,8 +37,8 @@ const MyItem = () => {
 
                     {
                         data.map(product => <tr>
-                            <div class="avatar">
-                                <div class="mask mask-squircle w-12 h-12 ms-3">
+                            <div className="avatar">
+                                <div className="mask mask-squircle w-12 h-12 ms-3">
                                     <img src={product.img} alt={product.name} />
                                 </div>
                             </div>

@@ -58,10 +58,10 @@ const ProductsDetails = () => {
 
     }
     return (
-        <div class="grid lg:grid-cols-2 lg:card-side bg-base-100 shadow-xl p-10">
+        <div className="grid lg:grid-cols-2 lg:card-side bg-base-100 shadow-xl p-10">
             <figure><img src={img} className='w-[90%]' alt="Album" /></figure>
-            <div class="card-body">
-                <h2 class="card-title">{name}</h2>
+            <div className="card-body">
+                <h2 className="card-title">{name}</h2>
                 <p className='font-bold'>Price:${price}</p>
                 <p className='font-bold'>weight:{productWeight}</p>
                 <p className='font-bold'>Diamention:300mm/120mm</p>
@@ -71,13 +71,13 @@ const ProductsDetails = () => {
                 <p> <span className='font-bold'>description : </span>{description}</p>
                 <form >
                     <label className='font-bold py-3' htmlFor="orderQuantity"> Plase your order [min-100 pc]</label>
-                    <input onChange={handleOrder} type="number" name='orderQuantity' placeholder="Place your order quantity" class="input input-bordered input-primary w-full max-w-xs py-3" />
+                    <input onChange={handleOrder} type="number" name='orderQuantity' placeholder="Place your order quantity" className="input input-bordered input-primary w-full max-w-xs py-3" />
                 </form>
                 <p className='text-red-500'>{error}</p>
-                <div class="card-actions justify-end">
+                <div className="card-actions justify-end">
                     <button
                         onClick={() => handleOrderItem(_id)}
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         disabled={disable}
                     >Order & checkout</button>
                 </div>
