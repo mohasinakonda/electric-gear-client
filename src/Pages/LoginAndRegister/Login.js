@@ -27,10 +27,6 @@ const Login = () => {
         return <Spinner />
     }
 
-
-
-
-
     const signInPassword = (event) => {
 
         event.preventDefault()
@@ -56,7 +52,7 @@ const Login = () => {
                         <input type="password" name='password' placeholder="password" className="input  input-bordered input-primary w-[100%] " required />
                         <input type="submit" value='Login' className='btn btn-secondary' />
                     </form>
-                    <p className='p-5'>Need have an account? <Link to='/register' className='text-primary' >create Account</Link></p>
+                    <p className='p-5'>Need have an account? <Link to='/login/register' className='text-primary' >create Account</Link></p>
                     <div className="divider">OR</div>
 
                 </div>

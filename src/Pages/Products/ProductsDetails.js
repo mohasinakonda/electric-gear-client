@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../Firebase.init';
 import Spinner from '../Shared/Spinner';
 
@@ -44,7 +45,7 @@ const ProductsDetails = () => {
         const orders = { name, price, quantity, stock, img, email: user.email }
 
         fetch('http://localhost:5000/orders', {
-            method: 'post',
+            method: 'put',
             headers: {
                 'content-type': 'application/json'
             },
@@ -52,8 +53,8 @@ const ProductsDetails = () => {
         })
             .then(res => res.json())
             .then(order => {
-                navigate('/dashboard')
-                console.log(order)
+                navigate(`/checkout/${id}`)
+
             })
 
 

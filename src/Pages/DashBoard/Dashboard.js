@@ -7,7 +7,7 @@ import Spinner from '../Shared/Spinner';
 
 const Deshboard = () => {
     const [user] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users').then(res => res.json()))
+    const { data, isLoading, } = useQuery('users', () => fetch('http://localhost:5000/users').then(res => res.json()))
 
 
     if (isLoading) {
@@ -30,7 +30,7 @@ const Deshboard = () => {
                 <label for="open-side-nav" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
 
-                    <li><Link to='/dashboard/profile'>Profile</Link></li>
+                    <li><Link to='/dashboard'>Profile</Link></li>
 
                     {adminInfo?.role === 'admin' ? <>
                         <li>
@@ -40,7 +40,7 @@ const Deshboard = () => {
                     </>
                         :
                         <>
-                            <li><Link to='/dashboard'>My items</Link></li>
+                            <li><Link to='/dashboard/my-items'>My items</Link></li>
                             <li><Link to='/dashboard/review'>Review</Link></li>
                         </>
 

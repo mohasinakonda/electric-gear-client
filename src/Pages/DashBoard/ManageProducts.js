@@ -1,15 +1,27 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import useProduct from '../../hooks/useProduct';
 import Spinner from '../Shared/Spinner';
-import Items from './Items';
 
 const ManageProducts = () => {
-    const [data, isLoading] = useProduct()
+    const [data, isLoading, refatch] = useProduct()
     if (isLoading) {
         return <Spinner />
     }
-    const handleBtn = () => {
-        console.log('click from admin')
+    const handleDelete = (id) => {
+        fetch(`http://localhost:5000/tools/${id}`, {
+            method: 'delete',
+
+        }).then(res => res.json())
+            .then(result => {
+                refatch()
+                console.log(result)
+                if (result.deletedCount === 1) {
+                    toast.success(` is delete`)
+                } else {
+                    toast.error(` is  not delete`)
+                }
+            })
     }
     return (
         <div>
@@ -51,7 +63,7 @@ const ManageProducts = () => {
                                 <td>
                                     <button class="btn btn-ghost btn-xs">update</button>
 
-                                    <button class="btn bg-red-500 btn-xs">delete</button>
+                                    <button onClick={() => handleDelete(product._id)} class="btn bg-red-500 btn-xs">delete</button>
                                 </td>
                             </tr>)
                         }

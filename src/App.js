@@ -18,6 +18,7 @@ import Users from './Pages/DashBoard/Users';
 import AddProduct from './Pages/DashBoard/AddProduct';
 import ManageProducts from './Pages/DashBoard/ManageProducts';
 import RequireAdmin from './Pages/LoginAndRegister/RequireAdmin';
+import CheckoutAndDetails from './Pages/Products/CheckoutAndDetails';
 
 
 function App() {
@@ -38,12 +39,21 @@ function App() {
           <RequireAuth>
             <ProductsDetails />
           </RequireAuth>
-        }></Route>
+        }>
+        </Route>
+        <Route path='/checkout/:productId' element={
+          <RequireAuth>
+            <CheckoutAndDetails />
+          </RequireAuth>
+        }>
+        </Route>
         <Route path='/products/products/:productId' element={
           <RequireAuth>
             <ProductsDetails />
           </RequireAuth>
-        }></Route>
+        }>
+
+        </Route>
         <Route
           path="/dashboard"
           element={
@@ -52,8 +62,8 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyItem />}></Route>
-          <Route path="profile" element={<Profile />}></Route>
+          <Route path='my-items' element={<MyItem />}></Route>
+          <Route index element={<Profile />}></Route>
           <Route path="review" element={<Review />}></Route>
           <Route path="users" element={
             <RequireAdmin>

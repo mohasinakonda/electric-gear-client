@@ -1,8 +1,7 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
-import auth from '../../Firebase.init';
+
 import Spinner from '../Shared/Spinner';
 
 const Users = () => {

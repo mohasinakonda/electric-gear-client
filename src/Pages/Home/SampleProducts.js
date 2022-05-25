@@ -9,6 +9,7 @@ const SampleProducts = () => {
     if (isLoading) {
         return <Spinner></Spinner>
     }
+
     return (
         <div>
             <h2 className='text-2xl text-secondary py-10'>Sample Products</h2>

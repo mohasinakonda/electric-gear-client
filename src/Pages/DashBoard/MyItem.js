@@ -2,20 +2,15 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../Firebase.init';
+import useMyItems from '../../hooks/useMyItem';
 import Spinner from '../Shared/Spinner';
+import Items from './Items'
 
 const MyItem = () => {
     const [user] = useAuthState(auth)
 
 
-    const { data, isLoading } = useQuery('my-items', () => fetch(`http://localhost:5000/order?email=${user.email}`, {
-        method: 'get',
-        headers: {
-            'authorization': `Bearen ${localStorage.getItem('access-token')}`
-        }
-    })
-        .then(product => product.json())
-    )
+    const [data, isLoading] = useMyItems(user)
 
     if (isLoading) {
         return <Spinner></Spinner>
@@ -39,11 +34,11 @@ const MyItem = () => {
                 </thead>
                 <tbody>
                     {
-                        data.map(product => <MyItem
+                        data.map(product => <Items
                             key={product._id}
                             product={product}
                             handleBtn={handleBtn}
-                        ></MyItem>)
+                        ></Items>)
                     }
                 </tbody>
             </table>
