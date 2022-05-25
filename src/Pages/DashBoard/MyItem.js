@@ -48,7 +48,10 @@ const MyItem = () => {
                             <td>{product.quantity}</td>
                             <td>$ {product.quantity * product.price}</td>
                             <td>
-                                <button className='btn btn-sm'>{product.paid ? 'paid' : 'pay'}</button>
+                                <button className='btn btn-sm mD-2'>{product.paid ? 'paid' : 'pay'}</button>
+
+                                <button className='btn btn-sm bg-red-500'>Cancel</button>
+
                             </td>
                         </tr>)
                     }

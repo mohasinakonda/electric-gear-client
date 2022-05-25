@@ -11,12 +11,13 @@ import Deshboard from './Pages/DashBoard/Dashboard';
 import MyItem from './Pages/DashBoard/MyItem';
 import Profile from './Pages/DashBoard/Profile';
 import Review from './Pages/DashBoard/Review';
-import RequireAuth from './RequireAuth';
+import RequireAuth from './Pages/LoginAndRegister/RequireAuth';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Users from './Pages/DashBoard/Users';
 import AddProduct from './Pages/DashBoard/AddProduct';
 import ManageProducts from './Pages/DashBoard/ManageProducts';
+import RequireAdmin from './Pages/LoginAndRegister/RequireAdmin';
 
 
 function App() {
@@ -49,9 +50,19 @@ function App() {
           <Route index element={<MyItem />}></Route>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="review" element={<Review />}></Route>
-          <Route path="users" element={<Users />}></Route>
-          <Route path="add-product" element={<AddProduct />}></Route>
-          <Route path="manage-product" element={<ManageProducts />}></Route>
+          <Route path="users" element={
+            <RequireAdmin>
+              <Users />
+            </RequireAdmin>
+          }></Route>
+          <Route path="add-product" element={<RequireAdmin>
+            <AddProduct />
+          </RequireAdmin>}></Route>
+          <Route path="manage-product" element={
+            <RequireAdmin>
+              <ManageProducts />
+            </RequireAdmin>
+          }></Route>
         </Route>
       </Routes>
       <ToastContainer></ToastContainer>

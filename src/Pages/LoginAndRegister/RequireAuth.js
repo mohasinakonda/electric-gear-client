@@ -2,8 +2,8 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, useLocation } from 'react-router-dom';
-import auth from './Firebase.init';
-import Spinner from './Pages/Shared/Spinner';
+import auth from '../../Firebase.init';
+import Spinner from '../Shared/Spinner';
 
 
 const RequireAuth = ({ children }) => {

@@ -8,6 +8,7 @@ import Spinner from '../Shared/Spinner';
 const Users = () => {
     // const [user] = useAuthState(auth)
     const { data, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users').then(res => res.json()))
+
     if (isLoading) {
         return <Spinner />
     }
