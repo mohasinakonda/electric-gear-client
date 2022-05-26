@@ -5,13 +5,14 @@ import { toast } from 'react-toastify';
 const AddProduct = () => {
 
     const AddProduct = (event) => {
+        event.preventDefault()
         const name = event.target.name.value
         const price = event.target.price.value
         const stock = event.target.quantity.value
         const description = event.target.description.value
         const img = event.target.img.value
         const product = { name, price, stock, description, img, status: 'avialable' }
-        fetch('http://localhost:5000/tools', {
+        fetch(' https://electric-gear.herokuapp.com/tools', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
@@ -21,9 +22,11 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                toast.success('product successfuly added')
                 if (data) {
+                    toast.success('product successfuly added')
                     console.log(data)
+                } else {
+                    console.log('something is wrong')
                 }
             })
 

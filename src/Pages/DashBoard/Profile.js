@@ -9,7 +9,7 @@ import ProfileInfo from './ProfileInfo';
 const Profile = () => {
     const [users, setUsers] = useState(null)
     const [user] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('profile', () => fetch(`http://localhost:5000/users/${user.email}`, {
+    const { data, isLoading, refetch } = useQuery('profile', () => fetch(` https://electric-gear.herokuapp.com/users/${user.email}`, {
         method: 'get',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('access-token')}`
@@ -25,7 +25,7 @@ const Profile = () => {
     if (isLoading) {
         return <Spinner />
     }
-    console.log(data)
+
 
 
     if (data) {

@@ -9,7 +9,7 @@ const ManageProducts = () => {
         return <Spinner />
     }
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/tools/${id}`, {
+        fetch(` https://electric-gear.herokuapp.com/tools/${id}`, {
             method: 'delete',
 
         }).then(res => res.json())

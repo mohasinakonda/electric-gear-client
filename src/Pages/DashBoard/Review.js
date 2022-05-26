@@ -8,7 +8,7 @@ import ReviewContainer from './ReviewContainer';
 
 const Review = () => {
     const [hookUser] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('profile', () => fetch(`http://localhost:5000/users/${hookUser.email}`, {
+    const { data, isLoading, refetch } = useQuery('profile', () => fetch(` https://electric-gear.herokuapp.com/users/${hookUser.email}`, {
         method: 'get',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('access-token')}`
@@ -28,7 +28,7 @@ const Review = () => {
         const review = event.target.review.value
         const reviewInfo = { name, img, rating, review }
 
-        fetch('http://localhost:5000/review', {
+        fetch(' https://electric-gear.herokuapp.com/review', {
             method: 'post',
             headers: {
                 'content-type': 'application/json'
@@ -38,7 +38,7 @@ const Review = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+
                 toast.success('review added successfuly added')
 
             })

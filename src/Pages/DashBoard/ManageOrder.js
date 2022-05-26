@@ -5,7 +5,7 @@ import Spinner from '../Shared/Spinner';
 
 
 const ManageOrder = () => {
-    const { data, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/orders',
+    const { data, isLoading, refetch } = useQuery('orders', () => fetch(' https://electric-gear.herokuapp.com/orders',
         {
             method: 'get',
             headers: {
@@ -18,7 +18,7 @@ const ManageOrder = () => {
         return <Spinner></Spinner>
     }
     const handleReject = (id, name) => {
-        fetch(`http://localhost:5000/tools/${id}`, {
+        fetch(` https://electric-gear.herokuapp.com/tools/${id}`, {
             method: 'delete',
 
         }).then(res => res.json())

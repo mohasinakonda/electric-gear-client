@@ -6,7 +6,7 @@ import Spinner from '../Shared/Spinner';
 
 const Users = () => {
     // const [user] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const { data, isLoading, refetch } = useQuery('users', () => fetch(' https://electric-gear.herokuapp.com/users', {
         method: 'get',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('access-token')}`
@@ -19,7 +19,7 @@ const Users = () => {
 
     const makeAdmin = (email) => {
 
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(` https://electric-gear.herokuapp.com/users/admin/${email}`, {
             method: 'put',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('access-token')}`

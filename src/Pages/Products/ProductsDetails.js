@@ -15,7 +15,7 @@ const ProductsDetails = () => {
     const { productId } = useParams()
 
     const navigate = useNavigate()
-    const { data, isLoading } = useQuery('products', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+    const { data, isLoading } = useQuery('products', () => fetch(' https://electric-gear.herokuapp.com/tools').then(res => res.json()))
 
     if (isLoading) {
         return <Spinner></Spinner>
@@ -44,7 +44,7 @@ const ProductsDetails = () => {
     const handleOrderItem = (id) => {
         const orders = { name, price, quantity, stock, img, email: user.email }
 
-        fetch('http://localhost:5000/orders', {
+        fetch(' https://electric-gear.herokuapp.com/orders', {
             method: 'put',
             headers: {
                 'content-type': 'application/json'

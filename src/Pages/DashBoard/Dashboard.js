@@ -7,7 +7,7 @@ import Spinner from '../Shared/Spinner';
 
 const Deshboard = () => {
     const [user] = useAuthState(auth)
-    const { data, isLoading, } = useQuery('users', () => fetch('http://localhost:5000/users', {
+    const { data, isLoading, } = useQuery('users', () => fetch(' https://electric-gear.herokuapp.com/users', {
         method: 'get',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('access-token')}`

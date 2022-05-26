@@ -15,7 +15,7 @@ const Modal = ({ users, setUsers, }) => {
         const city = event.target.city.value
         const updateInfo = { age, country, city, img }
 
-        fetch(`http://localhost:5000/users/update/${user.email}`, {
+        fetch(` https://electric-gear.herokuapp.com/users/update/${user.email}`, {
             method: "put",
             headers: {
                 'content-type': 'application/json',
