@@ -53,7 +53,7 @@ const ProductsDetails = () => {
         })
             .then(res => res.json())
             .then(order => {
-                navigate(`/checkout/${id}`)
+                toast('order completed')
 
             })
 

@@ -16,7 +16,7 @@ const Items = ({ product, handleBtn }) => {
                 <td>{product.quantity}</td>
                 <td>$ {product.quantity * product.price}</td>
                 <td>
-                    <button onClick={handleBtn} className='btn btn-sm m-2'>{product.paid ? 'paid' : 'pay'}</button>
+                    <button onClick={() => handleBtn(product._id)} className='btn btn-sm m-2'>{product.paid ? 'paid' : 'pay'}</button>
 
                     <button className='btn btn-sm bg-red-500'>Cancel</button>
 
