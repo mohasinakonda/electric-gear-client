@@ -43,6 +43,9 @@ const Deshboard = () => {
                             <Link to='/dashboard/users'>Users</Link></li>
                         <li><Link to='/dashboard/add-product'>Add product</Link></li>
                         <li><Link to='/dashboard/manage-product'>Manage product</Link></li>
+                        <li>
+                            <Link to='/dashboard/manage-orders'>Manage Order</Link>
+                        </li>
                     </>
                         :
                         <>

@@ -11,8 +11,9 @@ const Modal = ({ users, setUsers, }) => {
         event.preventDefault()
         const age = event.target.age.value
         const country = event.target.country.value
+        const img = event.target.img.value
         const city = event.target.city.value
-        const updateInfo = { age, country, city }
+        const updateInfo = { age, country, city, img }
 
         fetch(`http://localhost:5000/users/update/${user.email}`, {
             method: "put",
@@ -40,7 +41,7 @@ const Modal = ({ users, setUsers, }) => {
                         <label htmlFor="name"> Name</label>
                         <input name='name'
                             type="text"
-                            value={matchUser.name}
+                            value={matchUser?.name}
                             readOnly
                             disabled
                             className="input  input-bordered input-primary  " />
@@ -50,19 +51,23 @@ const Modal = ({ users, setUsers, }) => {
                             type="email"
                             readOnly
                             disabled
-                            value={matchUser.email} className="input  input-bordered input-primary  " />
+                            value={matchUser?.email} className="input  input-bordered input-primary  " />
 
 
-                        <label htmlFor="age"> age</label>
+                        <label htmlFor="img"> Image url</label>
+
+                        <input type="text" name='img' placeholder="image url" className="input  input-bordered input-primary w-[100%]  " />
+
+                        <label htmlFor="age"> Age</label>
 
                         <input type="text" name='age' placeholder="age" className="input  input-bordered input-primary w-[100%]  " />
 
 
-                        <label htmlFor="country"> country</label>
+                        <label htmlFor="country"> Country</label>
 
                         <input type="text" name='country' placeholder="country" className="input  input-bordered input-primary w-[100%]  " />
 
-                        <label htmlFor="city"> city</label>
+                        <label htmlFor="city"> City</label>
 
                         <input type="text" name='city' placeholder="city" className="input  input-bordered input-primary w-[100%]  " />
 

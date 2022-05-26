@@ -4,11 +4,12 @@ import { useQuery } from 'react-query';
 import auth from '../../Firebase.init';
 import Spinner from '../Shared/Spinner';
 import Modal from '../Modal/Modal'
+import ProfileInfo from './ProfileInfo';
 
 const Profile = () => {
     const [users, setUsers] = useState(null)
     const [user] = useAuthState(auth)
-    const { data, isLoading, refetch } = useQuery('profile', () => fetch('http://localhost:5000/users', {
+    const { data, isLoading, refetch } = useQuery('profile', () => fetch(`http://localhost:5000/users/${user.email}`, {
         method: 'get',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('access-token')}`
@@ -24,25 +25,19 @@ const Profile = () => {
     if (isLoading) {
         return <Spinner />
     }
-    const userMatch = data?.find(match => match.email === user.email)
-    if (userMatch) {
+    console.log(data)
+
+
+    if (data) {
         refetch()
     }
 
 
     return (
         <div className='p-10 shadow-xl'>
-            <div className='flex justify-between py-5'>
-
-                <h2 className='text-2xl'>welcome <span className='font-bold'>{userMatch?.name}</span></h2>
-                <label htmlFor='open-modal' className='btn  btn-sm'>edit</label >
-            </div>
-            <hr />
-            <p>name: {userMatch?.name}</p>
-            <p>email: {userMatch?.email}</p>
-            <p>age: {userMatch?.age}</p>
-            <p>city: {userMatch?.city}</p>
-            <p>country: {userMatch?.country}</p>
+            {
+                data.map(user => <ProfileInfo key={user._id} user={user} />)
+            }
             {users && <Modal users={users} setUsers={setUsers} ></Modal>}
         </div>
     );

@@ -1,14 +1,14 @@
 import React from 'react';
 import Banner from './Banner';
 import SampleProducts from './SampleProducts';
-import Review from './Review';
+import Reviews from './Reviews';
 
 const Home = () => {
     return (
         <div className='bg-gradient-to-r from-primary to-secondary'>
             <Banner></Banner>
             <SampleProducts></SampleProducts>
-            <Review></Review>
+            <Reviews></Reviews>
 
         </div>
     );

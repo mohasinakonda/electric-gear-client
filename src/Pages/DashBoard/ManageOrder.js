@@ -1,25 +1,34 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
-import useProduct from '../../hooks/useProduct';
 import Spinner from '../Shared/Spinner';
 
-const ManageProducts = () => {
-    const [data, isLoading, refetch] = useProduct()
+
+const ManageOrder = () => {
+    const { data, isLoading, refetch } = useQuery('orders', () => fetch('http://localhost:5000/orders',
+        {
+            method: 'get',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`
+            }
+        }
+    ).then(res => res.json())
+    )
     if (isLoading) {
-        return <Spinner />
+        return <Spinner></Spinner>
     }
-    const handleDelete = (id) => {
+    const handleReject = (id, name) => {
         fetch(`http://localhost:5000/tools/${id}`, {
             method: 'delete',
 
         }).then(res => res.json())
             .then(result => {
                 refetch()
-                console.log(result)
+
                 if (result.deletedCount === 1) {
-                    toast.success(` is delete`)
+                    toast.success(`${name} is delete`)
                 } else {
-                    toast.error(` is  not delete`)
+                    toast.error(`${name} is  not delete`)
                 }
             })
     }
@@ -33,9 +42,10 @@ const ManageProducts = () => {
                             <th>
                                 Image
                             </th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Stock</th>
+                            <th>Email</th>
+                            <th>product</th>
+                            <th>quantity</th>
+                            <th>price</th>
                             <th>Action</th>
 
                         </tr>
@@ -56,14 +66,15 @@ const ManageProducts = () => {
                                     </div>
                                 </td>
 
+                                <td>{product.email}</td>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
-                                <td>{product.stock}</td>
+                                <td>{product.quantity}</td>
 
                                 <td>
-                                    <button class="btn btn-ghost btn-xs">update</button>
+                                    <button class="btn btn-ghost btn-xs">delevery</button>
 
-                                    <button onClick={() => handleDelete(product._id)} class="btn bg-red-500 btn-xs">delete</button>
+                                    <button onClick={() => handleReject(product._id, product.name)} class="btn bg-red-500 btn-xs">Reject</button>
                                 </td>
                             </tr>)
                         }
@@ -79,4 +90,4 @@ const ManageProducts = () => {
     );
 };
 
-export default ManageProducts;
+export default ManageOrder;
