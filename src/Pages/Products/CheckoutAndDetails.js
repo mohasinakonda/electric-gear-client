@@ -9,6 +9,7 @@ const CheckoutAndDetails = () => {
     const [user] = useAuthState(auth)
     const { productId } = useParams()
     const [data, isLoading] = useProduct(user)
+
     if (isLoading) {
         return <Spinner />
     }

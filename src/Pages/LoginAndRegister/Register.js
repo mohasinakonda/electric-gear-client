@@ -56,8 +56,6 @@ const Register = () => {
     return (
         <div>
 
-
-
             <div className='w-[50%] mx-auto m-5'  >
                 <div className='card bg-base-100 shadow-xl '>
 

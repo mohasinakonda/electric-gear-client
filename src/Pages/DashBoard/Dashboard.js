@@ -7,13 +7,19 @@ import Spinner from '../Shared/Spinner';
 
 const Deshboard = () => {
     const [user] = useAuthState(auth)
-    const { data, isLoading, } = useQuery('users', () => fetch('http://localhost:5000/users').then(res => res.json()))
+    const { data, isLoading, } = useQuery('users', () => fetch('http://localhost:5000/users', {
+        method: 'get',
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('access-token')}`
+        }
+    }).then(res => res.json()))
 
 
     if (isLoading) {
         return <Spinner />
     }
-    const adminInfo = data.find(admin => admin.email === user.email)
+
+    const adminInfo = data?.find(admin => admin.email === user.email)
 
     return (
         <div className="drawer drawer-mobile">
@@ -27,7 +33,7 @@ const Deshboard = () => {
 
 
             <div className="drawer-side">
-                <label for="open-side-nav" className="drawer-overlay"></label>
+                <label htmlFor="open-side-nav" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
 
                     <li><Link to='/dashboard'>Profile</Link></li>
