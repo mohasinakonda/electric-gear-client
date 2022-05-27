@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from './Banner';
 import SampleProducts from './SampleProducts';
 import Reviews from './Reviews';
+import Footer from '../Shared/Footer';
 
 const Home = () => {
     return (
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner></Banner>
             <SampleProducts></SampleProducts>
             <Reviews></Reviews>
+            <Footer></Footer>
 
         </div>
     );
