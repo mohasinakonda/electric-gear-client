@@ -22,6 +22,7 @@ import CheckoutAndDetails from './Pages/Products/CheckoutAndDetails';
 import ManageOrder from './Pages/DashBoard/ManageOrder';
 import Blogs from './Pages/Blogs/Blogs';
 import Portfolio from './Pages/Portfolio/Portfolio';
+import Blog from './Pages/Blogs/Blog';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='products' element={<AllProduct />}></Route>
         <Route path='blogs' element={<Blogs />}></Route>
+        <Route path='blogs/:postId' element={<Blog />}></Route>
         <Route path='portfolio' element={<Portfolio />}></Route>
         {/* nested routs  */}
         <Route path="/login" element={<LoginRegister />}>
