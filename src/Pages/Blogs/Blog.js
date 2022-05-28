@@ -23,8 +23,6 @@ const Blog = () => {
                     <figure><img src={blog.postImg} alt={blog.title} /></figure>
                     <div class="card-body">
 
-
-
                         <p>
                             {blog.article}
                         </p>
