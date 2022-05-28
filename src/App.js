@@ -23,6 +23,7 @@ import ManageOrder from './Pages/DashBoard/ManageOrder';
 import Blogs from './Pages/Blogs/Blogs';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import Blog from './Pages/Blogs/Blog';
+import NotFound from './Pages/Shared/NotFound';
 
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
             </RequireAdmin>
           }></Route>
         </Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
 
