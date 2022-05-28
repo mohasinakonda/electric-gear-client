@@ -20,6 +20,8 @@ import ManageProducts from './Pages/DashBoard/ManageProducts';
 import RequireAdmin from './Pages/LoginAndRegister/RequireAdmin';
 import CheckoutAndDetails from './Pages/Products/CheckoutAndDetails';
 import ManageOrder from './Pages/DashBoard/ManageOrder';
+import Blogs from './Pages/Blogs/Blogs';
+import Portfolio from './Pages/Portfolio/Portfolio';
 
 
 function App() {
@@ -28,13 +30,17 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home />}></Route>
+        <Route path='products' element={<AllProduct />}></Route>
+        <Route path='blogs' element={<Blogs />}></Route>
+        <Route path='portfolio' element={<Portfolio />}></Route>
+        {/* nested routs  */}
         <Route path="/login" element={<LoginRegister />}>
 
 
           <Route index element={<Login />}></Route>
           <Route path="register" element={<Register></Register>}></Route>
         </Route>
-        <Route path='products' element={<AllProduct />}></Route>
+
 
         <Route path='/products/:productId' element={
           <RequireAuth>

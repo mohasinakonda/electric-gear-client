@@ -25,6 +25,10 @@ const Navbar = () => {
         </li>
         <li>
 
+            <Link to='/portfolio'>Portfolio</Link>
+        </li>
+        <li>
+
             <Link to='/dashboard'>Dashboard</Link>
         </li>
     </>

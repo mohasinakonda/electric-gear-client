@@ -6,7 +6,7 @@ import Footer from '../Shared/Footer';
 
 const Home = () => {
     return (
-        <div className='bg-gradient-to-r from-primary to-secondary'>
+        <div className='bg-gradient-to-r from-primary to-secondary mt-7'>
             <Banner></Banner>
             <SampleProducts></SampleProducts>
             <Reviews></Reviews>
