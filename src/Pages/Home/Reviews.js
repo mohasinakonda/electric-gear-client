@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import Spinner from '../Shared/Spinner';
 import ReviewCard from './ReviewCard';
 
 const Reviews = () => {
 
-    const [reversUser, setReverseUser] = useState([])
+
     const { data: users, isLoading } = useQuery('review', () => fetch(' https://electric-gear.herokuapp.com/review')
         .then(res => res.json())
     )
 
-    /* useEffect(() => {
-        fetch(' https://electric-gear.herokuapp.com/review')
-            .then(res => res.json())
-            .then(data => setReverseUser(data))
 
-    }, []) */
 
     if (isLoading) {
         return <Spinner />
     }
 
     const revers = users.reverse().slice(0, 3)
-    console.log(revers)
+
 
 
     return (
