@@ -11,7 +11,7 @@ const BlogsCard = ({ blogs }) => {
             <figure><img src={blogs.postImg} alt="Shoes" /></figure>
             <div class="card-body">
                 <h2 class="card-title">{blogs.title}</h2>
-                <p>{blogs.article.slice(0, 300)}<button onClick={() => postHandler(blogs._id)} class="text-accent text-xl">Read more</button></p>
+                <p>{blogs.article.slice(0, 300).toString()}<button onClick={() => postHandler(blogs._id)} class="text-accent text-xl">Read more</button></p>
 
             </div>
         </div>

@@ -14,8 +14,8 @@ const ReviewCard = ({ user }) => {
                     </div>
                     <div>
 
-                        <h2 class="text-xl  font-bold m-3">{user?.name}</h2>
-                        <small> rating: <span className='text-yellow-500'>{user.rating}</span></small>
+                        <h2 class="text-xl  font-bold mx-3">{user?.name}</h2>
+                        <small className='font-bold mx-3'> rating: <span className='text-yellow-300 '>{user.rating}</span></small>
                     </div>
                 </div>
                 <p>{user.review}</p>

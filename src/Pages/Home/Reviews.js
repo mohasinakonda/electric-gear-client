@@ -6,22 +6,23 @@ import ReviewCard from './ReviewCard';
 const Reviews = () => {
 
     const [reversUser, setReverseUser] = useState([])
-    /* const { data: users, isLoading } = useQuery('review', () => fetch(' https://electric-gear.herokuapp.com/review')
+    const { data: users, isLoading } = useQuery('review', () => fetch(' https://electric-gear.herokuapp.com/review')
         .then(res => res.json())
-    ) */
+    )
 
-    useEffect(() => {
+    /* useEffect(() => {
         fetch(' https://electric-gear.herokuapp.com/review')
             .then(res => res.json())
             .then(data => setReverseUser(data))
 
-    }, [])
+    }, []) */
 
-    // if (isLoading) {
-    //     return <Spinner />
-    // }
+    if (isLoading) {
+        return <Spinner />
+    }
 
-    console.log(reversUser.reverse().slice(0, 3).map(data => console.log(data)))
+    const revers = users.reverse().slice(0, 3)
+    console.log(revers)
 
 
     return (
@@ -32,7 +33,7 @@ const Reviews = () => {
 
 
                 {
-                    reversUser?.reverse().slice(0, 3).map(user => <ReviewCard
+                    revers?.map(user => <ReviewCard
                         key={user._id}
                         user={user}
 
