@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Spinner from '../Shared/Spinner';
 import useOrder from '../../hooks/useOrder'
+import { FaTrash } from 'react-icons/fa';
 
 
 const ManageOrder = () => {
@@ -12,12 +13,17 @@ const ManageOrder = () => {
         return <Spinner></Spinner>
     }
     const handleReject = (id, name) => {
-        fetch(` https://electric-gear.herokuapp.com/tools/${id}`, {
+        fetch(` https://electric-gear.herokuapp.com/orders/${id}`, {
             method: 'delete',
+            headers: {
+
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`
+            }
 
         }).then(res => res.json())
             .then(result => {
                 refetch()
+                console.log(result)
 
                 if (result.deletedCount === 1) {
                     toast.success(`${name} is delete`)
@@ -61,14 +67,14 @@ const ManageOrder = () => {
                                 </td>
 
                                 <td>{product.email}</td>
-                                <td>{product.name}</td>
-                                <td>{product.price}</td>
+                                <td title={product.name}>{product.name.length > 30 ? product.name.slice(0, 24) + '...' : product.name}</td>
+                                <td>$ {product.price}</td>
                                 <td>{product.quantity}</td>
 
                                 <td>
                                     <button class="btn btn-ghost btn-xs">delevery</button>
 
-                                    <button onClick={() => handleReject(product._id, product.name)} class="btn bg-red-500 btn-xs">Reject</button>
+                                    <button onClick={() => handleReject(product._id, product.name)} class="btn bg-red-500 btn-xs"><FaTrash /></button>
                                 </td>
                             </tr>)
                         }

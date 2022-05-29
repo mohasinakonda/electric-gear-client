@@ -2,6 +2,8 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import useProduct from '../../hooks/useProduct';
 import Spinner from '../Shared/Spinner';
+import { FaTrash } from 'react-icons/fa';
+
 
 const ManageProducts = () => {
     const [data, isLoading, refetch] = useProduct()
@@ -56,14 +58,14 @@ const ManageProducts = () => {
                                     </div>
                                 </td>
 
-                                <td>{product.name}</td>
+                                <td title={product.name}>{product.name.length > 30 ? product.name.slice(0, 24) + '...' : product.name}</td>
                                 <td>{product.price}</td>
                                 <td>{product.stock}</td>
 
                                 <td>
                                     <button class="btn btn-ghost btn-xs">update</button>
 
-                                    <button onClick={() => handleDelete(product._id)} class="btn bg-red-500 btn-xs">delete</button>
+                                    <button onClick={() => handleDelete(product._id)} class="btn bg-red-500 btn-xs"><FaTrash /></button>
                                 </td>
                             </tr>)
                         }
