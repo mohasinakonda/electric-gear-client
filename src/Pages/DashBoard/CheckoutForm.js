@@ -30,9 +30,9 @@ const CheckoutForm = ({ order }) => {
 
     }, [price])
 
+    console.log(price)
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         if (!stripe || !elements) {
             return;
         }
@@ -114,7 +114,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !clientSecret || success}>
+                <button className='btn btn-success btn-sm mt-4' type="submit" >
                     Pay
                 </button>
             </form>

@@ -59,7 +59,7 @@ const ManageProducts = () => {
                                 </td>
 
                                 <td title={product.name}>{product.name.length > 30 ? product.name.slice(0, 24) + '...' : product.name}</td>
-                                <td>{product.price}</td>
+                                <td>$ {product.price}</td>
                                 <td>{product.stock}</td>
 
                                 <td>

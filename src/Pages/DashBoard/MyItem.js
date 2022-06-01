@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../Firebase.init';
 import useMyItems from '../../hooks/useMyItem';
 import Spinner from '../Shared/Spinner';
@@ -11,13 +12,33 @@ const MyItem = () => {
     const [user] = useAuthState(auth)
     const navigate = useNavigate()
 
-    const [data, isLoading] = useMyItems(user)
+    const [data, isLoading, refetch] = useMyItems(user)
 
     if (isLoading) {
         return <Spinner></Spinner>
     }
     const handleBtn = (id) => {
         navigate(`checkout/${id}`)
+    }
+    const handleReject = (id, name) => {
+        fetch(` https://electric-gear.herokuapp.com/orders/${id}`, {
+            method: 'delete',
+            headers: {
+
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`
+            }
+
+        }).then(res => res.json())
+            .then(result => {
+                refetch()
+                console.log(result)
+
+                if (result.deletedCount === 1) {
+                    toast.success(`${name} is delete`)
+                } else {
+                    toast.error(`${name} is  not delete`)
+                }
+            })
     }
     return (
         <div className="overflow-x-auto">
@@ -38,6 +59,7 @@ const MyItem = () => {
                         data.map(product => <Items
                             key={product._id}
                             product={product}
+                            handleReject={handleReject}
                             handleBtn={handleBtn}
                         ></Items>)
                     }
