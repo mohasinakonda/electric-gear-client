@@ -1,17 +1,17 @@
-import { useQuery } from "react-query"
+import { useQuery } from "react-query";
 
 const useOder = () => {
-    const { data, isLoading, refetch } = useQuery('orders', () => fetch(' https://electric-gear.herokuapp.com/orders',
-        {
-            method: 'get',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('access-token')}`
-            }
-        }
-    ).then(res => res.json())
-    )
+  const { data, isLoading, refetch } = useQuery("orders", () =>
+    fetch(" https://electric-gear.herokuapp.com/orders", {
+      method: "get",
+      mode: "no-cors",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("access-token")}`,
+      },
+    }).then((res) => res.json())
+  );
 
-    return [data, isLoading, refetch]
-}
+  return [data, isLoading, refetch];
+};
 
-export default useOder
+export default useOder;

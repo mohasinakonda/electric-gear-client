@@ -1,18 +1,28 @@
-import React from 'react';
-import img from '../../assests/images/banner-img.jpg'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import img from "../../assests/images/banner-img.jpg";
 const Banner = () => {
-    return (
-        <div className="hero min-h-screen " style={{ background: `url(${img})`, backgroundSize: 'cover' }} >
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl ">Welcome to see  our <span className='text-primary font-bold'>Electric Gear</span> </h1>
-                    <p className="mb-5 text-xl">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button className="btn btn-primary">Get Started</button>
-                </div>
-            </div>
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("products");
+  };
+  return (
+    <div class="hero min-h-screen bg-base-100">
+      <div class=" hero-content flex-col lg:flex-row-reverse">
+        <img src={img} class="max-w-xl rounded-lg shadow-2xl" alt="" />
+        <div>
+          <h1 class="text-5xl font-bold">ELECTRIC GEAR</h1>
+          <p class="py-6 text-xl">
+            we are best electric tool manufacturer in the world, we have
+            millions of client worldwide,meet the client what they tell us. We
+            the number one brand in the world, we sell products
+            Europe,USA,Canada,France,Germany, Italy, UK,Qutar and so many
+          </p>
+          <button class="btn bg-cyan-400 border-0">Get Started</button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Banner;
