@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const useOder = () => {
@@ -11,7 +13,8 @@ const useOder = () => {
     }).then((res) => res.json())
   );
 
-  return [data, isLoading, refetch];
+  console.log(data);
+  return [data, isLoading];
 };
 
 export default useOder;

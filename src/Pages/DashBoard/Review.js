@@ -38,7 +38,7 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("review added successfuly added");
+        toast.success("review added successfully added");
       });
   };
   return (

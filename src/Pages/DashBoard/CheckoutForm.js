@@ -11,8 +11,11 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   const { _id, price, name, email } = order;
+  console.log("outside  useEffect", price);
 
-  /* useEffect(() => {
+  useEffect(() => {
+    console.log("inside  useEffect", price);
+
     fetch("https://electric-gear.herokuapp.com/create-payment-intent", {
       method: "post",
       mode: "no-cors",
@@ -28,10 +31,11 @@ const CheckoutForm = ({ order }) => {
           setClientSecret(data.clientSecret);
         }
       });
-  }, [price]); */
+  }, [price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (!stripe || !elements) {
       return;
     }
@@ -46,12 +50,32 @@ const CheckoutForm = ({ order }) => {
       type: "card",
       card,
     });
-
-    setCardError(error?.message || "");
+    if (error) {
+      console.log(error);
+    } else {
+      const { paymentIntent, error: intentError } =
+        await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: email.split("@")[0],
+              email: email,
+            },
+          },
+        });
+      if (intentError) {
+        console.log(intentError);
+      }
+      // console.log(paymentMethod);
+      console.log(paymentIntent);
+    }
+    /* setCardError(error?.message || "");
     setSuccess("");
     setProcessing(true);
+
+     */
     // confirm card payment
-    const { paymentIntent, error: intentError } =
+    /* const { paymentIntent, error: intentError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: card,
@@ -69,10 +93,10 @@ const CheckoutForm = ({ order }) => {
       setCardError("");
       setTransactionId(paymentIntent.id);
       console.log(paymentIntent);
-      setSuccess("Congrats! Your payment is completed.");
+      setSuccess("Congrats! Your payment is completed."); */
 
-      //store payment on database
-      const payment = {
+    //store payment on database
+    /* const payment = {
         appointment: _id,
         transactionId: paymentIntent.id,
       };
@@ -89,7 +113,7 @@ const CheckoutForm = ({ order }) => {
           setProcessing(false);
           console.log(data);
         });
-    }
+    } */
   };
   return (
     <>

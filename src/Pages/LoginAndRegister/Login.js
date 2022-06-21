@@ -33,11 +33,11 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="w-[50%] mx-auto m-5">
+      <div className="w-[50%] mx-auto m-5 p-10">
         <div className="card bg-base-100 shadow-xl ">
           <form
             onSubmit={signInPassword}
-            className=" grid grid-cols-1 gap-3 mx-auto  w-[100%] px-5"
+            className=" grid grid-cols-1 gap-3 mx-auto  w-[100%] px-10"
           >
             <label htmlFor="email"> Email</label>
             <input
