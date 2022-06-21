@@ -12,10 +12,14 @@ const SampleProducts = () => {
 
   return (
     <div>
-      <div className="flex flex-between">
+      <div className="flex justify-between items-center">
         <h2 className="text-2xl text-accent p-10">Our Products</h2>
-        <Link to="/products" text-accent p-10>
-          see all Products
+        <Link
+          to="/products"
+          className="text-cyan-500 text-lg hover:text-cyan-200"
+          p-10
+        >
+          See all Products &gt;
         </Link>
       </div>
 
