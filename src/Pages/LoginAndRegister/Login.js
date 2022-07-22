@@ -33,7 +33,7 @@ const Login = () => {
   };
   return (
     <div>
-      <div className="w-[50%] mx-auto m-5 p-10">
+      <div className="w-96 mx-auto m-5 ">
         <div className="card bg-base-100 shadow-xl ">
           <form
             onSubmit={signInPassword}
